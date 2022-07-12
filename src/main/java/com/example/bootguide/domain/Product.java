@@ -1,30 +1,28 @@
 package com.example.bootguide.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.example.bootguide.common.BaseEntity;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
-@Getter @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Data
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) /* 채번 생성을 DB 기본전략으로 지정 */
-    private Long id;
+    Long id;
 
     @Column(nullable = false)
-    private String name;
+    String name;
 
     @Column(nullable = false)
-    private Integer price;
+    Integer price;
 
     @Column(nullable = false)
-    private Integer stock;
+    Integer stock;
 
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 }
